@@ -10,7 +10,10 @@ If you don't like these terms, don't run any of the scripts in this repo.
 
 # SECOND WARNING
 
-Seriously, use of these scripts could brick your raspberry pi and render it useless.
+Seriously, use of these scripts in this RaspPiNexmonScripts Repo could brick your raspberry pi and render it useless.
+The scrits in this Repo automate the work done at https://github.com/seemoo-lab/nexmon who also warn that your hardware
+could suffer irreperable and permenent damage.
+
 Only carry on if you take full responsibility.
 
 I have only automated the RasPi steps described in detail at https://github.com/seemoo-lab/nexmon
