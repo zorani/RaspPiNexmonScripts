@@ -41,10 +41,16 @@ I've automated that process with a script that you can run on the following RasP
 
 
 The script will detect and build the modified driver for the above models.
-The script will backup the origional hardware driver from location, 
-/lib/modules/4.14.79-v7+/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko
+
+The script will backup the origional hardware driver from location,
+
+    /lib/modules/4.14.79-v7+/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko
+    
 to
-/lib/modules/4.14.79-v7+/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko.bkp
+
+    /lib/modules/4.14.79-v7+/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko.bkp
+    
+    
 
 RUN AS ROOT
 
@@ -52,10 +58,40 @@ For board revision history information, you might like to check the following li
 
 https://elinux.org/RPi_HardwareHistory#Board_Revision_History
 
-### To findout what raspberry pi hardware you are running using the bash command line
+#### To findout what raspberry pi hardware you are running using the bash command line
 
-cat /proc/cpuinfo | grep 'Revision' | cut -d : -f2 | xargs
+    cat /proc/cpuinfo | grep 'Revision' | cut -d : -f2 | xargs
 
 xargs conveniently truncates the white spaces around the result.
+
+#### QUICK START: TRY YOUR AWSOME SNIFFER IN JUST A FEW MOMENTS 
+
+Here are some commands to get you going, to test if the new driver works.
+	
+ 1) Install tcpdump if you have not already.
+	
+        sudo apt-get install tcpdump
+	
+ 2) Set up monitor mode on your wireless card, wlan0.
+	
+        sudo iw phy `iw dev wlan0 info | gawk '/wiphy/ {printf "phy" $2}'` interface add mon0 type monitor
+	
+ 3) Activate monitor mode in the firmware.
+ 
+        sudo ifconfig mon0 up
+ 
+ 4) Start sniffing WiFi packets.
+	
+        sudo tcpdump -i wlan0
+	
+ 
+You should see a whole lot of wifi data streaming down your screen.
+This is the very basic setup, you can now go and explore. Have fun!
+	  
+NOTE: To connect to regular access points you have to execute nexutil -m0 first
+NOTE: It is possible to connect to an access point or run your own access point in parallel to the monitor mode interface on the wlan0 interface
+
+
+
 
 
