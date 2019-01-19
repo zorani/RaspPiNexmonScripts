@@ -170,29 +170,6 @@ remove_wpasupplicant(){
 	apt-get --allow-change-held-packages --yes remove wpasupplicant 
 }
 
-final_notes(){
-
-	echo " Note: To connect to regular access points you have to execute nexutil -m0 first "
-	echo
-	echo
-	echo " USING THE MONITOR MODE PATCH "
-	echo " ============================ "
-	echo
-	echo " Thanks to the prior work of Mame82, you can setup a new monitor mode interface by executing: iw phy \`iw dev wlan0 info | gawk '/wiphy/ {printf \"phy\" \$2}'\` interface add mon0 type monitor
-	To activate monitor mode in the firmware, simply set the interface up: ifconfig mon0 up.
-	At this point, monitor mode is active. There is no need to call airmon-ng.
-	The interface already set the Radiotap header, therefore, tools like tcpdump or airodump-ng can be used out of the box: tcpdump -i mon0
-	Optional: To make the RPI3 load the modified driver after reboot:
-	Find the path of the default driver at reboot: modinfo brcmfmac #the first line should be the full path
-	Backup the original driver: mv \"<PATH TO THE DRIVER>/brcmfmac.ko\" \"<PATH TO THE DRIVER>/brcmfmac.ko.orig\"
-	Copy the modified driver (Kernel 4.9): cp /home/pi/nexmon/patches/bcm43430a1/7_45_41_46/nexmon/brcmfmac_kernel49/brcmfmac.ko \"<PATH TO THE DRIVER>/\"
-	Copy the modified driver (Kernel 4.14): cp /home/pi/nexmon/patches/bcm43430a1/7_45_41_46/nexmon/brcmfmac_4.14.y-nexmon/brcmfmac.ko \"<PATH TO THE DRIVER>/\"
-	Probe all modules and generate new dependency: depmod -a
-	The new driver should be loaded by default after reboot: reboot  * Note: It is possible to connect to an access point or run your own access point in parallel to the monitor mode interface on the wlan0 interface. "
-
-
-}
-
 quick_start(){
 
 
@@ -215,11 +192,11 @@ quick_start(){
 
 	3) Activate monitor mode in the firmware.
 
-           ifconfig mon0 up
+           sudo ifconfig mon0 up
 
         4) Start snuiffing WiFi packets.
 
-	   tcpdump -i wlan0
+	   sudo tcpdump -i wlan0
 
 
 	   
@@ -228,6 +205,9 @@ quick_start(){
 	  
 	   "
 
+
+	 echo "NOTE: To connect to regular access points you have to execute nexutil -m0 first"
+	 echo "NOTE: It is possible to connect to an access point or run your own access point in parallel to the monitor mode interface on the wlan0 interface"
 }
 
 load_mod_driver_on_reboot(){
@@ -261,7 +241,7 @@ fi
 		bkp_driver_command="mv $default_driver_path $default_driver_path_bkp"
 		insert_new_driver_cmd="mv $mod_driver_ko $default_driver_path"
 
-
+                depmod -a
 	fi
 
 
@@ -281,7 +261,6 @@ setup_build_env
 install_nexutil
 remove_wpasupplicant
 load_mod_driver_on_reboot
-final_notes
 quick_start
 
 fi
