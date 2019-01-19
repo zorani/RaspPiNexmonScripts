@@ -196,7 +196,7 @@ quick_start(){
 
         4) Start snuiffing WiFi packets.
 
-	   sudo tcpdump -i wlan0
+	   sudo tcpdump -i mon0
 
 
 	   
