@@ -82,7 +82,7 @@ Here are some commands to get you going, to test if the new driver works.
  
  4) Start sniffing WiFi packets.
 	
-        sudo tcpdump -i wlan0
+        sudo tcpdump -i mon0
 	
  
 You should see a whole lot of wifi data streaming down your screen.
