@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+#WARNING
+#This script could break your hardware permanently
+#Please read further details at https://github.com/zorani/RaspPiNexmonScripts/blob/master/README.md
+
+#If you understand the warnings above, please continue.
+
 #PLEASE RUN THIS AS ROOT
 
 evalpath=$(eval pwd)
