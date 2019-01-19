@@ -1,3 +1,6 @@
+Before we get to the point of all that packet sniffing goodness... a word of warning
+from the people who actually did all the work.
+
 # WARNING
 
 The scripts in this repo may damage your hardware and may void your hardware’s warranty! 
