@@ -193,6 +193,39 @@ final_notes(){
 
 }
 
+quick_start(){
+
+
+	echo " QUICK START: TRY YOUR AWSOME SNIFFER IN JUST A FEW MOMENTS "
+	echo " =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-= "
+	echo
+	echo " Here are some commands to get you going, to test if the new driver works.
+
+
+	1) Install tcpdump if you have not already.
+
+	   sudo apt-get install tcpdump
+
+	2) Set up monitor mode on your wireless card, wlan0.
+
+	   sudo iw \'iw dev wlan0 info | gawk '/wiphy/ {printf \"phy\" \$2}'\` interface add mon0 type monitor
+
+	3) Activate monitor mode in the firmware.
+
+           ifconfig mon0 up
+
+        4) Start snuiffing WiFi packets.
+
+	   tcpdump -i wlan0
+
+
+	   
+	   You should see a whole lot of wifi data streaming down your screen.
+	   This is the very basic setup, you can now go and explore. Have fun!
+	  
+	   "
+
+}
 
 load_mod_driver_on_reboot(){
 
@@ -246,5 +279,6 @@ install_nexutil
 remove_wpasupplicant
 load_mod_driver_on_reboot
 final_notes
+quick_start
 
 fi
