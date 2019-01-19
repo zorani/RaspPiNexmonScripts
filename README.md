@@ -88,7 +88,10 @@ Here are some commands to get you going, to test if the new driver works.
 You should see a whole lot of wifi data streaming down your screen.
 This is the very basic setup, you can now go and explore. Have fun!
 	  
-NOTE: To connect to regular access points you have to execute nexutil -m0 first
+NOTE: To connect to regular access points you have to execute 
+
+	nexutil -m0 first
+	
 NOTE: It is possible to connect to an access point or run your own access point in parallel to the monitor mode interface on the wlan0 interface
 
 
