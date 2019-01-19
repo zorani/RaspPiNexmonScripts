@@ -33,6 +33,7 @@ https://github.com/seemoo-lab/nexmon
 I've automated that process with a script that you can run on the following RasPi models
 
 -Pi Zero W (Hardware revision 9000c1)
+ Note: You must have a second WiFi dongle attached to connect you to the internet.
 
 -Pi Model 3B (Hardware revision a02082, a22082  & a32082)
 
@@ -51,5 +52,10 @@ For board revision history information, you might like to check the following li
 
 https://elinux.org/RPi_HardwareHistory#Board_Revision_History
 
+### To findout what raspberry pi hardware you are running using the bash command line
+
+cat /proc/cpuinfo | grep 'Revision' | cut -d : -f2 | xargs
+
+xargs conveniently truncates the white spaces around the result.
 
 
