@@ -10,7 +10,7 @@
 
 evalpath=$(eval pwd)
 
-declare -a arr_deps=("raspberrypi-kernel-headers" "git" "libgmp3-dev" "gawk" "qpdf" "bison" "flex" "make")
+declare -a arr_deps=("raspberrypi-kernel-headers" "git" "libgmp3-dev" "gawk" "qpdf" "bison" "flex" "make" "autoconf" "automake")
 declare -a arr_purge=("raspberrypi-kernel-headers" "libgmp3-dev" "gawk" "qpdf" "bison" "flex")
 
 
