@@ -196,6 +196,9 @@ final_notes(){
 quick_start(){
 
 
+	echo
+	echo
+	echo
 	echo " QUICK START: TRY YOUR AWSOME SNIFFER IN JUST A FEW MOMENTS "
 	echo " =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-= "
 	echo
@@ -208,7 +211,7 @@ quick_start(){
 
 	2) Set up monitor mode on your wireless card, wlan0.
 
-	   sudo iw \'iw dev wlan0 info | gawk '/wiphy/ {printf \"phy\" \$2}'\` interface add mon0 type monitor
+	   sudo iw phy \`iw dev wlan0 info | gawk '/wiphy/ {printf \"phy\" \$2}'\` interface add mon0 type monitor
 
 	3) Activate monitor mode in the firmware.
 
