@@ -82,16 +82,27 @@ Here are some commands to get you going, to test if the new driver works.
  
  4) Start sniffing WiFi packets.
 	
-        sudo tcpdump -i wlan0
+        sudo tcpdump -i mon0
 	
  
 You should see a whole lot of wifi data streaming down your screen.
 This is the very basic setup, you can now go and explore. Have fun!
 	  
-NOTE: To connect to regular access points you have to execute nexutil -m0 first
+NOTE: To connect to regular access points you have to execute 
+
+	nexutil -m0 first
+	
 NOTE: It is possible to connect to an access point or run your own access point in parallel to the monitor mode interface on the wlan0 interface
 
 
+## Pre compiled drivers for kernel 4.14.79
 
+Backup and replace the driver at the following location
+
+    /lib/modules/4.14.79-v7+/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko
+
+### Raspberry Pi 3B+  
+
+PI3BPLUS_K414_brcmfmac.ko   (Change name to just the brcmfmac.ko)
 
 
