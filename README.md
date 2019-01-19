@@ -95,6 +95,14 @@ NOTE: To connect to regular access points you have to execute
 NOTE: It is possible to connect to an access point or run your own access point in parallel to the monitor mode interface on the wlan0 interface
 
 
+## Pre compiled drivers for kernel 4.14.79
 
+Backup and replace the driver at the following location
+
+    /lib/modules/4.14.79-v7+/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko
+
+### Raspberry Pi 3B+  
+
+PI3BPLUS_K414_brcmfmac.ko   (Change name to just the brcmfmac.ko)
 
 
