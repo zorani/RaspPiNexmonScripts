@@ -118,7 +118,7 @@ You will find the location of the default reboot location on the first line of t
  
  	cat /proc/cpuinfo | grep 'Revision' | cut -d : -f2 | xargs
  
- 
+REBOOT YOUR RASPBERRY PI TO ACTIVATE THE NEW DRIVER
 
 ### Raspberry Pi 3B+ {a020d3}  
 
