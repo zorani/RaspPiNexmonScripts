@@ -108,6 +108,18 @@ quick_start(){
 			
 		sudo airodump-ng -i mon0
 
+
+	
+	**Tips and donations**
+	  =-=-=-=-=-=-=-=-=- 
+
+	  If this script has been convenient, and if you want to provide me with some beer money, please donate at the following address.
+	  Thank you for using this script 
+
+	  BITCOIN:    1C1j4iPURFniAQEr5EkMCC8LA5Nn8o69VY
+	  OMNI ASSET: 1C1j4iPURFniAQEr5EkMCC8LA5Nn8o69VY
+
+
 		"
 }
 
