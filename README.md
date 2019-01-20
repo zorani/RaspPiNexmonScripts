@@ -30,6 +30,10 @@ https://github.com/seemoo-lab/nexmon
 
 ### Script:  WiFiCardModDriver.sh
 
+run as root
+
+	sudo ./WiFiCardModDriver.sh
+
 I've automated that process with a script that you can run on the following RasPi models
 
 -Pi Zero W (Hardware revision 9000c1)
