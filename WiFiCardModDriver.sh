@@ -239,7 +239,9 @@ fi
 	if [ $is_414 -eq 1 ] && [ ! -e $default_driver_path_bkp  ] ; then
 
 		bkp_driver_command="mv $default_driver_path $default_driver_path_bkp"
+		eval $bkp_driver_command
 		insert_new_driver_cmd="mv $mod_driver_ko $default_driver_path"
+		eval $insert_new_driver_cmd
 
                 depmod -a
 	fi
