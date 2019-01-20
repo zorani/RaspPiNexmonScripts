@@ -106,17 +106,34 @@ NOTE: It is possible to connect to an access point or run your own access point 
 
 ## Pre compiled drivers for kernel 4.14.79
 
-Backup and replace the driver at the following location
+Backup and replace the driver at the default reboot location, you can find it using the following command,
+
+	modinfo brcmfmac
+
+You will find the location of the default reboot location on the first line of the output, it may look like the following:
 
     /lib/modules/4.14.79-v7+/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko
+    
+ The board revision numbers I have precompiled for are, the PI3B+ a020d3,  PI3B a02082 and the PIZeroW 9000c1.
+ Each RaspPi Model may have many hardware revision id numbers, check that out here https://elinux.org/RPi_HardwareHistory#Board_Revision_History
+ 
+ Here is the command to check your raspberry pi hardware.
+ 
+ 	cat /proc/cpuinfo | grep 'Revision' | cut -d : -f2 | xargs
+ 
+ 
 
-### Raspberry Pi 3B+  
+### Raspberry Pi 3B+ {a020d3}  
 
-	PI3BPLUS_K414_brcmfmac.ko   (Change name to just the brcmfmac.ko)
+	PI3BPLUS_a020d3_K4.14.79_brcmfmac.ko   (Change name to just the brcmfmac.ko)
+	
+### Raspberry pi 3B  {a02082}
 
-### Raspberry Pi Zero W
+	PI3B_a02082_K4.14.79_brcmfmac.ko       (Change name to just the brcmfmac.ko)
 
-	PiZW_K414_brcmfmac.ko       (Change name to just the brcmfmac.ko) 
+### Raspberry pi Zero W  {9000c1}
+
+	PiZW_9000c1_K4.14.79_brcmfmac.ko       (Change name to just the brcmfmac.ko) 
 
 ## Airsniffing Software
 
