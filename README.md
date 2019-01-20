@@ -59,9 +59,6 @@ the first line of the output will confirm the location of the default reboot dri
 does this automatically.
 
 	modinfo brcmfmac
-    
-
-RUN AS ROOT
 
 For board revision history information, you might like to check the following link,
 
