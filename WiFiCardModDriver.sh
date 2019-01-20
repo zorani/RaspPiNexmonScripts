@@ -208,7 +208,18 @@ quick_start(){
 
 	 echo "NOTE: To connect to regular access points you have to execute nexutil -m0 first"
 	 echo "NOTE: It is possible to connect to an access point or run your own access point in parallel to the monitor mode interface on the wlan0 interface"
-}
+         echo
+	 echo "**Tips and donations**"
+         echo "  =-=-=-=-=-=-=-=-=-  "
+	 echo
+	 echo " If this script has been convenient, and if you want to provide me with some beer money, please donate at the following address. "
+	 echo " Thank you for using this script "
+
+	 echo "BITCOIN:    1C1j4iPURFniAQEr5EkMCC8LA5Nn8o69VY"
+	 echo "OMNI ASSET: 1C1j4iPURFniAQEr5EkMCC8LA5Nn8o69VY"
+	 echo
+ 
+ }
 
 load_mod_driver_on_reboot(){
 
