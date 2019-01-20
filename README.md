@@ -107,7 +107,11 @@ Backup and replace the driver at the following location
 
 ### Raspberry Pi 3B+  
 
-PI3BPLUS_K414_brcmfmac.ko   (Change name to just the brcmfmac.ko)
+	PI3BPLUS_K414_brcmfmac.ko   (Change name to just the brcmfmac.ko)
+
+### Raspberry Pi Zero W
+
+	PiZW_K414_brcmfmac.ko       (Change name to just the brcmfmac.ko) 
 
 ## Airsniffing Software
 
