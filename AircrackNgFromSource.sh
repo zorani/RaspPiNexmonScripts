@@ -63,6 +63,14 @@ clone_repo(){
 	git clone https://github.com/aircrack-ng/aircrack-ng.git
 }
 
+get_release(){
+
+
+	wget https://github.com/aircrack-ng/aircrack-ng/archive/1.5.2.tar.gz
+	tar -zxvf 1.5.2.tar.gz
+        mv aircrack-ng-1.5.2 aircrack-ng
+
+}
 
 install_ng(){
 
@@ -105,7 +113,8 @@ quick_start(){
 
 install_dependencies
 install_opt_dependencies
-clone_repo
+#clone_repo
+get_release
 install_ng
 quick_start
 
