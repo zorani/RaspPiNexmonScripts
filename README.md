@@ -53,7 +53,12 @@ The script will backup the origional hardware driver from location,
 to
 
     /lib/modules/4.14.79-v7+/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko.bkp
-    
+   
+You can confirm the location of the default hardware using the following command in a shell,
+the first line of the output will confirm the location of the default reboot driver. The script
+does this automatically.
+
+	modinfo brcmfmac
     
 
 RUN AS ROOT
