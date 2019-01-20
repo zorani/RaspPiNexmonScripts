@@ -72,13 +72,42 @@ install_ng(){
 	./configure --with-experimental --with-ext-scripts
 	make
 	make install
+ 	ldconfig
+}
 
+
+quick_start(){
+
+
+	echo
+	echo
+	echo
+	echo " QUICK START: RUN A QUICK TEST OF YOUR AIRCRACK-NG "
+	echo " =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=- "
+	echo
+	echo " Here are some commands to get you going, to test if the new driver works.
+		
+							
+	1) Set up monitor mode on your wireless card, wlan0.
+												   
+		sudo iw phy \`iw dev wlan0 info | gawk '/wiphy/ {printf \"phy\" \$2}'\` interface add mon0 type monitor
+												   	
+	2) Activate monitor mode in the firmware.
+
+		sudo ifconfig mon0 up
+	
+	3) Start snuiffing WiFi packets.
+			
+		sudo airodump-ng -i mon0
+
+		"
 }
 
 install_dependencies
 install_opt_dependencies
 clone_repo
 install_ng
+quick_start
 
 
 
