@@ -121,7 +121,7 @@ Here are some commands to get you going, to test if the new driver works.
 							
 1) Set up monitor mode on your wireless card, wlan0.
 												   
-		sudo iw phy \`iw dev wlan0 info | gawk '/wiphy/ {printf \"phy\" \$2}'\` interface add mon0 type monitor
+		sudo iw phy `iw dev wlan0 info | gawk '/wiphy/ {printf "phy" $2}'` interface add mon0 type monitor
 												   	
 2) Activate monitor mode in the firmware.
 
