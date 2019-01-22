@@ -11,8 +11,6 @@
 evalpath=$(eval pwd)
 
 declare -a arr_deps=("raspberrypi-kernel-headers" "git" "libgmp3-dev" "gawk" "qpdf" "bison" "flex" "make" "autoconf" "automake" "m4")
-declare -a arr_purge=("raspberrypi-kernel-headers" "libgmp3-dev" "gawk" "qpdf" "bison" "flex")
-
 
 goto_nexmon_path(){
 
@@ -71,17 +69,6 @@ do
 		echo "$dep Status:INSTALLED"
 		echo
 	fi
-done
-
-}
-
-purge_packages(){
-
-for rdep in "${arr_purge[@]}"
-do
-
- 	command="apt-get --allow-change-held-packages --yes purge $rdep"
-        eval $command
 done
 
 }
@@ -219,6 +206,10 @@ quick_start(){
 	 echo "OMNI ASSET: 1C1j4iPURFniAQEr5EkMCC8LA5Nn8o69VY"
 	 echo
  
+
+echo "Recomend you reboot to fix wlan0 name assignment issue"
+echo
+
  }
 
 load_mod_driver_on_reboot(){
@@ -261,20 +252,46 @@ fi
 
 }
 
+fix_wlan0_to_onboard_chip(){
+#What you will see sometimes is that wlan0 will point to the onboard chip, sometimes it won't
+#if you attache another wifi dongle to your system.
+
+
+#Disable predictable names
+ln -nfs /dev/null /etc/systemd/network/99-default.link
+
+#Set following names, wlan0 is given to onboard chip
+cat >/etc/udev/rules.d/72-wlan-geo-dependent.rules <<EOL
+
+ACTION=="add", SUBSYSTEM=="net", SUBSYSTEMS=="sdio", KERNELS=="mmc1:0001:1", NAME="wlan0"
+ACTION=="add", SUBSYSTEM=="net", SUBSYSTEMS=="usb",  KERNELS=="1-1.2",       NAME="wlan1"
+ACTION=="add", SUBSYSTEM=="net", SUBSYSTEMS=="usb",  KERNELS=="1-1.4",       NAME="wlan2"
+ACTION=="add", SUBSYSTEM=="net", SUBSYSTEMS=="usb",  KERNELS=="1-1.3",       NAME="wlan3"
+ACTION=="add", SUBSYSTEM=="net", SUBSYSTEMS=="usb",  KERNELS=="1-1.5",       NAME="wlan4"
+
+EOL
+
+}
+
 
 check_pi_version
 
 if [ $pi_version != "NOT" ]; then
 
 install_dependencies
-#purge_packages
 clone_repo
 check_for_libisl
 setup_build_env
 install_nexutil
-remove_wpasupplicant
 load_mod_driver_on_reboot
+fix_wlan0_to_onboard_chip
 quick_start
+
+####---------OPTIONAL-FUNCTIONS-------####### Remove hash to enable function
+
+#remove_wpasupplicant
+
+
 
 fi
 
