@@ -173,17 +173,29 @@ quick_start(){
 
 	   sudo apt-get install tcpdump
 
-	2) Set up monitor mode on your wireless card, wlan0.
+        2) SKIP THIS STEP IF YOU HAVE NOT CONNECTED ANY EXTRA USB WIFI DONGLES
+	
+	   If you have connected an extra wifi USB dongle, the wlan0
+	   interface name will randomly change. You can either keep and
+	   eye out for the internal wifi chip by using iwconfig, or more 
+	   conveniently set predictable network interface names using
 
-	   sudo iw phy \`iw dev wlan0 info | gawk '/wiphy/ {printf \"phy\" \$2}'\` interface add mon0 type monitor
+	   sudo raspi-config
 
-	3) Activate monitor mode in the firmware.
+	   select networking, then select enable on predictive naming.
+           WARNING: YOU WILL BE ASKED TO RESET.  DO THIS BEFORE CONTINUING.
 
-           sudo ifconfig mon0 up
+   	3) Set up monitor mode on your wireless card, wlan0.
 
-        4) Start snuiffing WiFi packets.
+	   sudo iw phy \`iw dev wlan0 info | gawk '/wiphy/ {printf \"phy\" \$2}'\` interface add wlan0mon type monitor
 
-	   sudo tcpdump -i mon0
+	4) Activate monitor mode in the firmware.
+
+           sudo ifconfig wlan0mon up
+
+        5) Start snuiffing WiFi packets.
+
+	   sudo tcpdump -i wlan0mon
 
 
 	   
@@ -252,28 +264,6 @@ fi
 
 }
 
-fix_wlan0_to_onboard_chip(){
-#What you will see sometimes is that wlan0 will point to the onboard chip, sometimes it won't
-#if you attache another wifi dongle to your system.
-
-
-#Disable predictable names
-ln -nfs /dev/null /etc/systemd/network/99-default.link
-
-#Set following names, wlan0 is given to onboard chip
-cat >/etc/udev/rules.d/72-wlan-geo-dependent.rules <<EOL
-
-ACTION=="add", SUBSYSTEM=="net", SUBSYSTEMS=="sdio", KERNELS=="mmc1:0001:1", NAME="wlan0"
-ACTION=="add", SUBSYSTEM=="net", SUBSYSTEMS=="usb",  KERNELS=="1-1.2",       NAME="wlan1"
-ACTION=="add", SUBSYSTEM=="net", SUBSYSTEMS=="usb",  KERNELS=="1-1.4",       NAME="wlan2"
-ACTION=="add", SUBSYSTEM=="net", SUBSYSTEMS=="usb",  KERNELS=="1-1.3",       NAME="wlan3"
-ACTION=="add", SUBSYSTEM=="net", SUBSYSTEMS=="usb",  KERNELS=="1-1.5",       NAME="wlan4"
-
-EOL
-
-}
-
-
 check_pi_version
 
 if [ $pi_version != "NOT" ]; then
@@ -284,7 +274,6 @@ check_for_libisl
 setup_build_env
 install_nexutil
 load_mod_driver_on_reboot
-fix_wlan0_to_onboard_chip
 quick_start
 
 ####---------OPTIONAL-FUNCTIONS-------####### Remove hash to enable function
