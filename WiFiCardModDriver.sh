@@ -167,7 +167,7 @@ install_nexutil(){
 
 remove_wpasupplicant(){
 
-	apt-get --allow-change-held-packages --yes remove wpasupplicant 
+	apt-get --allow-change-held-packages --yes purge wpasupplicant 
 }
 
 quick_start(){
@@ -277,3 +277,5 @@ load_mod_driver_on_reboot
 quick_start
 
 fi
+
+apt-get --allow-change-held-packages --yes  autoremove
