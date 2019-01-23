@@ -73,22 +73,34 @@ xargs conveniently truncates the white spaces around the result.
 #### QUICK START: TRY YOUR AWSOME SNIFFER IN JUST A FEW MOMENTS 
 
 Here are some commands to get you going, to test if the new driver works.
+
+1) Install tcpdump if you have not already.
+
+	   sudo apt-get install tcpdump
+
+2) SKIP THIS STEP IF YOU HAVE NOT CONNECTED ANY EXTRA USB WIFI DONGLES
 	
- 1) Install tcpdump if you have not already.
-	
-        sudo apt-get install tcpdump
-	
- 2) Set up monitor mode on your wireless card, wlan0.
-	
-        sudo iw phy `iw dev wlan0 info | gawk '/wiphy/ {printf "phy" $2}'` interface add mon0 type monitor
-	
- 3) Activate monitor mode in the firmware.
- 
-        sudo ifconfig mon0 up
- 
- 4) Start sniffing WiFi packets.
-	
-        sudo tcpdump -i mon0
+	  If you have connected an extra wifi USB dongle, the wlan0
+	  interface name will randomly change. You can either keep and
+	  eye out for the internal wifi chip by using iwconfig, or more 
+	  conveniently set predictable network interface names using
+
+	   sudo raspi-config
+
+	  select networking, then select enable on predictive naming.
+          WARNING: YOU WILL BE ASKED TO RESET.  DO THIS BEFORE CONTINUING.
+
+3) Set up monitor mode on your wireless card, wlan0.
+
+	   sudo iw phy `iw dev wlan0 info | gawk '/wiphy/ {printf "phy" $2}'` interface add wlan0mon type monitor
+
+4) Activate monitor mode in the firmware.
+
+           sudo ifconfig wlan0mon up
+
+5) Start snuiffing WiFi packets.
+
+	   sudo tcpdump -i wlan0mon
 	
  
 You should see a whole lot of wifi data streaming down your screen.
@@ -119,16 +131,39 @@ After you have run the install script AircrackNgFromSource.sh you can be up and 
 Here are some commands to get you going, to test if the new driver works.
 		
 							
-1) Set up monitor mode on your wireless card, wlan0.
-												   
-		sudo iw phy `iw dev wlan0 info | gawk '/wiphy/ {printf "phy" $2}'` interface add mon0 type monitor
-												   	
-2) Activate monitor mode in the firmware.
 
-		sudo ifconfig mon0 up
+												   
+   1) SKIP THIS STEP IF YOU HAVE NOT CONNECTED ANY EXTRA USB WIFI DONGLES
+
+	   If you have connected an extra wifi USB dongle, the wlan0 
+	   interface name will randomly change. You can either keep an
+	   eye out for the internal wifi chip by using iwconfig, or more
+	   conveniently set predictable network interface names using
+
+	   	sudo raspi-config
+
+	   select networking, then select enable on predictive naming.
+           WARNING: YOU WILL BE ASKED TO RESET.  DO THIS BEFORE CONTINUING.
 	
-3) Start sniffing WiFi packets with airodump!
+   2)  Setup monitor mode on wlan0, or whatever name is pointing to your onboard chip.
+
+	    There are two commands you can use,
+
+	      the origional,
+
+	       C1)  sudo iw phy `iw dev wlan0 info | gawk '/wiphy/ {printf "phy" $2}'` interface add wlan0mon type monitor
+
+	      but even better, aircrack-ng provides the following command.
+
+	       C2) airmon-ng start wlan0
+												   				 
+   3) Activate monitor mode in the firmware.
+
+  		sudo ifconfig wlan0mon up
+	
+   4) Start snuiffing WiFi packets.
 			
-		sudo airodump-ng -i mon0
+	  	sudo airodump-ng -i wlan0mon
+
 
 
