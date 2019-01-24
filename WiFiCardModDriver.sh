@@ -264,6 +264,32 @@ fi
 
 }
 
+stop_dchpcd_managing_wlan0(){
+
+	cat >> /etc/dhcpcd.conf << EOL
+
+#The following line was insterted by the WiFiCardModDriver.sh script
+#from https://github.com/zorani/RaspPiNexmonScripts
+#dhcpcd sometimes tried to manage wlan0 and switches it back to 
+#managed mode from monitor mode.
+#The following line should be placed at the end of /etc/dhcpcd.conf
+#But above any other added interfaces.
+#I am guessing this is a fresh pi install and there are none, so 
+#am appending to the end of the file. Please move if not.
+#Thank you.
+
+denyinterfaces wlan0
+
+
+EOL
+
+#Restart dhcpcd to pick up config changes.
+
+systemctl restart dhcpcd
+
+}
+
+
 check_pi_version
 
 if [ $pi_version != "NOT" ]; then
@@ -275,6 +301,7 @@ setup_build_env
 install_nexutil
 load_mod_driver_on_reboot
 quick_start
+stop_dhcpcd_managing_wlan0
 
 ####---------OPTIONAL-FUNCTIONS-------####### Remove hash to enable function
 
