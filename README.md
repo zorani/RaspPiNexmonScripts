@@ -112,6 +112,11 @@ NOTE: To connect to regular access points you have to execute
 	
 NOTE: It is possible to connect to an access point or run your own access point in parallel to the monitor mode interface on the wlan0 interface
 
+NOTE: The DHCPCD service is known to occasionaly try and manage wlan0 again by setting it to managed mode.
+      This ofcourse stops airodump-ng or tcpdump from collecting data.  Airodump-ng will suddenly stop collecting data.
+      In an attempt to over come this problem the WiFi setup script runs a stop_dchpcd_managing_wlan0() command.
+      More info availabel in the code comments.
+      
 
 ## Airsniffing Software
 
