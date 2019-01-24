@@ -173,6 +173,13 @@ Here are some commands to get you going, to test if the new driver works.
    4) Start snuiffing WiFi packets.
 			
 	  	sudo airodump-ng -i wlan0mon
+		
+		
+## WiFi Drivers, Community Support From The Famous MrEngman
 
+### Script: install-wifi
 
+I had some external USB wifi adapters that needed the help from the famous Mr Engman. 
+Anyone online looking for a USB driver will have come accross this generous member of the raspi community. 
+Here is the thread I found him in https://www.raspberrypi.org/forums/viewtopic.php?t=62371&start=1225 and here is a link to the script text, http://www.fars-robotics.net/install-wifi
 
