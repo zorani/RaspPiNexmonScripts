@@ -264,9 +264,9 @@ fi
 
 }
 
-stop_dchpcd_managing_wlan0(){
+stop_dhcpcd_managing_wlan0(){
 
-	cat >> /etc/dhcpcd.conf << EOL
+	cat >>/etc/dhcpcd.conf<<EOL
 
 #The following line was insterted by the WiFiCardModDriver.sh script
 #from https://github.com/zorani/RaspPiNexmonScripts
