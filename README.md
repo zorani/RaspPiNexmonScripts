@@ -177,6 +177,18 @@ Here are some commands to get you going, to test if the new driver works.
 		
 ## WiFi Drivers, Community Support From The Famous MrEngman
 
+If you are lucky wnough to have an ethernet cable point while you are packet sniffing,
+you can use your hard wire connection to send back packet reports to your AWS instance... or where ever.
+
+If.. you want a fully independed wifi only raspi sniffer, you're going to get a small headache, but it can be done.
+It all depends on the manufacturer, compatibility and driver availabitliy of your usb.
+
+The exact USB WiFi radio I got to work in this setup was the https://wikidevi.com/wiki/TP-LINK_TL-WN725N_v2
+Carefull! Multiple revisions of this device, use caution. Check all the specs agains https://wikidevi.com/wiki/TP-LINK_TL-WN725N_v2
+
+I bought this one from Amazon, https://www.amazon.co.uk/gp/product/B008IFXQFU/ , who knows if this changes in the future.
+
+
 ### Script: install-wifi
 
 I had some external USB wifi adapters that needed the help from the famous Mr Engman. 
