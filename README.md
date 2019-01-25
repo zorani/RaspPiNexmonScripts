@@ -225,3 +225,11 @@ Odd ah?!
 
 Anyway, happy packet sniffing.
 
+edit: spoke too soon.  looks like the following file lets wpa_supplicant still ping wlan0
+
+https://github.com/raspberrypi-ui/dhcpcd-6.7.1/blob/master/dhcpcd-hooks/10-wpa_supplicant
+
+suggested modification of this file is discussed here...
+
+https://serverfault.com/questions/869857/systemd-how-to-selectively-disable-wpa-supplicant-for-a-specific-wlan-interface
+
