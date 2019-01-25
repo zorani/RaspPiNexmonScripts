@@ -278,8 +278,11 @@ stop_dhcpcd_managing_wlan0(){
 #am appending to the end of the file. Please move if not.
 #Thank you.
 
-denyinterfaces wlan0
 
+interface wlan0
+
+denyinterfaces wlan0
+nohook wpa_supplicant
 
 EOL
 
