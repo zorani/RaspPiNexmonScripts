@@ -191,6 +191,7 @@ I found two commands to fix my rpi-update mistake on the following thread,
 https://github.com/Hexxeh/rpi-update/issues/222
 
 Command 1) sudo apt-get install --reinstall raspberrypi-bootloader raspberrypi-kernel
+
 Command 2) sudo BRANCH=stable rpi-update and it's all revert back nicely.
 
 All of my Wifi Failed, and I used an ethernet cable to complete the above.
