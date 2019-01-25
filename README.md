@@ -183,3 +183,32 @@ I had some external USB wifi adapters that needed the help from the famous Mr En
 Anyone online looking for a USB driver will have come accross this generous member of the raspi community. 
 Here is the thread I found him in https://www.raspberrypi.org/forums/viewtopic.php?t=62371&start=1225 and here is a link to the script text, http://www.fars-robotics.net/install-wifi
 
+Further tips:  It does feel a bit hit and miss, but I have finally got packat listening on the onboard wifi, and internet
+access on the usb wifi radio to send data elsewhere.
+
+I tried rpi-update, but that failed.
+I found two commands to fix my rpi-update mistake on the following thread,
+https://github.com/Hexxeh/rpi-update/issues/222
+
+Command 1) sudo apt-get install --reinstall raspberrypi-bootloader raspberrypi-kernel
+Command 2) sudo BRANCH=stable rpi-update and it's all revert back nicely.
+
+All of my Wifi Failed, and I used an ethernet cable to complete the above.
+
+I found that my external USB wifi was completely missing!
+So, I ran MrEngmans install-wifi script - perfect, connected to the internet straight away.
+
+I then triend airmon-ng start wlan0... "Mode not supported"
+Ofcourse, the driver was already written over.
+So I re-ran - WiFiCardModDriver.sh
+Then re-ran - AircrackNgFromSource.sh
+
+I guess the lesson here is, completely uninstall USB WIFI drivers for your USB stick if you have issues, 
+and use MrEngmans instead.
+
+One last tip, if you have been setting up your pi with an ethernet cable... if you unplug it your wifi
+will have issue routing webpages to your browser, you must restart your pi without the ethernet cable in.
+Odd ah?!  
+
+Anyway, happy packet sniffing.
+
