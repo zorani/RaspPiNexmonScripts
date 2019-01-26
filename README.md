@@ -118,20 +118,17 @@ A well known symptom observed by users of airodump-ng is a sudden stop of packet
 
 The DHCPCD service is known to occasionaly try and manage wlan0 again by setting it to managed mode.
 This ofcourse stops airodump-ng or tcpdump from collecting data.  Airodump-ng will suddenly stop collecting data.
-In an attempt to over come this problem the WiFi setup script runs a stop_dchpcd_managing_wlan0() command.
-More info availabel in the code comments. Some clues in this thread https://serverfault.com/questions/869857/systemd-how-to-selectively-disable-wpa-supplicant-for-a-specific-wlan-interface
-      
+In an attempt to over come this problem the WiFi setup script runs the following methods:
 
-edit: spoke too soon. looks like the following file lets wpa_supplicant still ping wlan0
+stop_dhcpcd_managing_wlan0
+stop_wpasupplicant_probing_wlan0
+stop_wlan0_power_management
 
-https://github.com/raspberrypi-ui/dhcpcd-6.7.1/blob/master/dhcpcd-hooks/10-wpa_supplicant
-
-suggested modification of this file is discussed here...
+The following soureces helped me figure this out:
 
 https://serverfault.com/questions/869857/systemd-how-to-selectively-disable-wpa-supplicant-for-a-specific-wlan-interface
-
-might also want to look at raspberry power management
-
+https://github.com/raspberrypi-ui/dhcpcd-6.7.1/blob/master/dhcpcd-hooks/10-wpa_supplicant
+https://serverfault.com/questions/869857/systemd-how-to-selectively-disable-wpa-supplicant-for-a-specific-wlan-interface
 http://thelowercasew.com/disabling-wifi-power-management-permanently-for-raspberry-pi-3-with-raspbian-jessie
 
 
