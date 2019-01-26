@@ -194,7 +194,7 @@ Here are some commands to get you going, to test if the new driver works.
 	  	sudo airodump-ng -i wlan0mon
 		
 		
-## WiFi Drivers, Community Support From The Famous MrEngman
+# USB WiFi Drivers, Want to also use your own wifi usb? Some Notes On Community Support From The Famous MrEngman
 
 If you are lucky wnough to have an ethernet cable point while you are packet sniffing,
 you can use your hard wire connection to send back packet reports to your AWS instance... or where ever.
@@ -217,6 +217,8 @@ Here is the thread I found him in https://www.raspberrypi.org/forums/viewtopic.p
 Further tips:  It does feel a bit hit and miss, but I have finally got packat listening on the onboard wifi, and internet
 access on the usb wifi radio to send data elsewhere.
 
+#### Are you tempted to play with rpi-update?  You may not need to, but here is my experience.
+
 I tried rpi-update, but that failed.
 I found two commands to fix my rpi-update mistake on the following thread,
 https://github.com/Hexxeh/rpi-update/issues/222
@@ -238,11 +240,10 @@ Then re-ran - AircrackNgFromSource.sh
 I guess the lesson here is, completely uninstall USB WIFI drivers for your USB stick if you have issues, 
 and use MrEngmans instead.
 
+## If you want internet access over Wifi, remove your lan cable - restart your Pi.
+
 One last tip, if you have been setting up your pi with an ethernet cable... if you unplug it your wifi
 will have issue routing webpages to your browser, you must restart your pi without the ethernet cable in.
 Odd ah?!  
 
 Anyway, happy packet sniffing.
-
-
-al
