@@ -130,7 +130,9 @@ This ofcourse stops airodump-ng or tcpdump from collecting data.  Airodump-ng wi
 In an attempt to over come this problem the WiFi setup script runs the following methods:
 
 stop_dhcpcd_managing_wlan0
+
 stop_wpasupplicant_probing_wlan0
+
 stop_wlan0_power_management
 
 The following soureces helped me figure this out:
