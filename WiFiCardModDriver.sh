@@ -290,7 +290,13 @@ EOL
 
 systemctl restart dhcpcd
 
-} 
+}
+
+stop_wpasupplicant_probing_wlan0(){
+
+sed -i '/\$ifwireless/c\if [ \"\$ifwireless\" = \"1\" ] && [ \"\$interface\" != \"wlan0\" ]  && \\ ' /lib/dhcpcd/dhcpcd-hooks/10-wpa_supplicant
+
+}
 
 stop_wlan0_power_management(){
 #Another cause of airodump dropping wlan0 and wlan0mon
@@ -304,7 +310,6 @@ touch /home/pi/wlan0_power_mgmt_off.sh
 
 cat >/home/pi/wlan0_power_mgmt_off.sh<<EOL
 #!/bin/bash
-iwconfig wlan0 power off
 
 EOL
 
@@ -341,6 +346,7 @@ install_nexutil
 load_mod_driver_on_reboot
 quick_start
 stop_dhcpcd_managing_wlan0
+stop_wpasupplicant_probing_wlan0
 stop_wlan0_power_management
 
 ####---------OPTIONAL-FUNCTIONS-------####### Remove hash to enable function
