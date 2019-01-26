@@ -301,15 +301,14 @@ sed -i '/\$ifwireless/c\if [ \"\$ifwireless\" = \"1\" ] && [ \"\$interface\" != 
 stop_wlan0_power_management(){
 #Another cause of airodump dropping wlan0 and wlan0mon
 
-#first of all actually power down wlan0
-iwconfig wlan0 power off
-
-#Now create a script and a service that will 
+#Create a script and a service that will 
 #turn off wifi power management on wlan0 at bootup
 touch /home/pi/wlan0_power_mgmt_off.sh
 
 cat >/home/pi/wlan0_power_mgmt_off.sh<<EOL
 #!/bin/bash
+
+iwconfig wlan0 power off
 
 EOL
 
