@@ -333,6 +333,16 @@ sudo systemctl enable wlan0pwroff.service
 
 }
 
+enable_predictable_network_interface_name(){
+
+sed -i /boot/cmdline.txt -e "s/net.ifnames=0 *//"
+rm -f /etc/systemd/network/99-default.link
+
+}
+
+disable_predictable_network_interface_name(){
+ln -sf /dev/null /etc/systemd/network/99-default.link
+}
 
 check_pi_version
 
@@ -348,10 +358,12 @@ quick_start
 stop_dhcpcd_managing_wlan0
 stop_wpasupplicant_probing_wlan0
 stop_wlan0_power_management
+enable_predictable_network_interface_name
 
 ####---------OPTIONAL-FUNCTIONS-------####### Remove hash to enable function
 
 #remove_wpasupplicant
+#disable_predictable_network_interface_name
 
 
 
