@@ -290,6 +290,42 @@ EOL
 
 systemctl restart dhcpcd
 
+} 
+
+stop_wlan0_power_management(){
+#Another cause of airodump dropping wlan0 and wlan0mon
+
+#first of all actually power down wlan0
+iwconfig wlan0 power off
+
+#Now create a script and a service that will 
+#turn off wifi power management on wlan0 at bootup
+touch /home/pi/wlan0_power_mgmt_off.sh
+
+cat >/home/pi/wlan0_power_mgmt_off.sh<<EOL
+#!/bin/bash
+iwconfig wlan0 power off
+
+EOL
+
+cat >/lib/systemd/system/wlan0pwroff.service<<EOL
+[Unit]
+Description=Turn Off wlan0 power managment
+After=multi-user.target
+ 
+[Service]
+Type=idle
+ExecStart=/home/pi/wlan0_power_mgmt_off.sh
+ 
+[Install]
+WantedBy=multi-user.target
+EOL
+
+chmod 644 /lib/systemd/system/wlan0pwroff.service
+
+sudo systemctl daemon-reload
+sudo systemctl enable wlan0pwroff.service
+
 }
 
 
@@ -305,6 +341,7 @@ install_nexutil
 load_mod_driver_on_reboot
 quick_start
 stop_dhcpcd_managing_wlan0
+stop_wlan0_power_management
 
 ####---------OPTIONAL-FUNCTIONS-------####### Remove hash to enable function
 
