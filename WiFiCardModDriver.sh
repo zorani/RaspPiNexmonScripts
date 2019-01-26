@@ -312,6 +312,8 @@ iwconfig wlan0 power off
 
 EOL
 
+chmod +x /home/pi/wlan0_power_mgmt_off.sh
+
 cat >/lib/systemd/system/wlan0pwroff.service<<EOL
 [Unit]
 Description=Turn Off wlan0 power managment
