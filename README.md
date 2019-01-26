@@ -214,6 +214,11 @@ I had some external USB wifi adapters that needed the help from the famous Mr En
 Anyone online looking for a USB driver will have come accross this generous member of the raspi community. 
 Here is the thread I found him in https://www.raspberrypi.org/forums/viewtopic.php?t=62371&start=1225 and here is a link to the script text, http://www.fars-robotics.net/install-wifi
 
+copy the script to /usr/bin/install-wifi
+sudo chmod +x /usr/bin/install-wifi
+
+then run it
+
 Further tips:  It does feel a bit hit and miss, but I have finally got packat listening on the onboard wifi, and internet
 access on the usb wifi radio to send data elsewhere.
 
