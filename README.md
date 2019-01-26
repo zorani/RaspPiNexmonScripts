@@ -30,6 +30,8 @@ I have only automated the RasPi steps described in detail at https://github.com/
 
 Please keep reading to find out why the above works, there are also usefull hints and tips.
 
+6) Have an external USB WiFi you want to use? Check the WiFi Section below for MrEngman solutions.
+
 ## Raspberry Pi, set built in chip to monitor mode. (Pi-Zero W, Pi-3B and Pi-3B+)
 
 The good people at the following link, the nexmon project have instructions to 
