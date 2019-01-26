@@ -130,6 +130,11 @@ suggested modification of this file is discussed here...
 
 https://serverfault.com/questions/869857/systemd-how-to-selectively-disable-wpa-supplicant-for-a-specific-wlan-interface
 
+might also want to look at raspberry power management
+
+http://thelowercasew.com/disabling-wifi-power-management-permanently-for-raspberry-pi-3-with-raspbian-jessie
+
+
 ## Airsniffing Software
 
 ### Script:  AircrackNgFromSource.sh
