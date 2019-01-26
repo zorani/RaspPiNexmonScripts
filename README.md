@@ -18,8 +18,16 @@ Only carry on if you take full responsibility.
 
 I have only automated the RasPi steps described in detail at https://github.com/seemoo-lab/nexmon
 
-
 # RaspPiNexmonScripts for Kernel 4.14 only.
+
+##QUICK START
+
+1) Start a raspberry pi with a fresh image
+2) Clone this repo
+3) sudo ./WifiCardModDriver.sh
+4) sudo ./AircrackNgFromSource.sh
+5) REBOOT YOUR PI
+
 
 ## Raspberry Pi, set built in chip to monitor mode. (Pi-Zero W, Pi-3B and Pi-3B+)
 
