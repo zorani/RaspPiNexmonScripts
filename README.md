@@ -4,6 +4,10 @@ I have done my very best, but have failed.  Please read all of the below text, I
 I have found online but have only managed to receive airodump-ng data for a maximum of 25 mins before it decides not
 to gather further data.
 
+I have caved in and bought, https://www.asus.com/Networking/USBAC56/
+following these install instructions you get good airodump-ng performance. https://github.com/aircrack-ng/rtl8812au
+I hope NEXMON can fix this sudden timeout issue.
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 Before we get to the point of all that packet sniffing goodness... a word of warning
