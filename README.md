@@ -1,3 +1,11 @@
+TLDR;
+
+I have done my very best, but have failed.  Please read all of the below text, I have applied every trick in the book
+I have found online but have only managed to receive airodump-ng data for a maximum of 25 mins before it decides not
+to gather further data.
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 Before we get to the point of all that packet sniffing goodness... a word of warning
 from the people who actually did all the work.
 
